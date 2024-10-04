@@ -1,11 +1,12 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 
 export default function MainLayout() {
+  const params = useLocation();
   return (
-    <main className="px-5 py-5">
-      <Navbar />
+    <main className="bg-[#F9FAFB]">
+      <Navbar where={params.pathname} />
       <Outlet />
       <Footer />
     </main>

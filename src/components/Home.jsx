@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCountry } from "../features/country/countrySlice";
 import Card from "./Card";
 import Sidebar from "./Sidebar";
+import Skeleton from "./Skeleton";
 
 export default function Home() {
   const { data, isLoading, errorMessage } = useSelector(
@@ -17,8 +18,20 @@ export default function Home() {
     }
   }, [dispatch]);
 
+  const [visibleCount, setVisibleCount] = useState(5);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+
+  const loadMoreItems = () => {
+    setIsLoadingMore(true); // Set loading status saat tombol diklik
+
+    setTimeout(() => {
+      setVisibleCount((prevCount) => prevCount + 10); // Tambah jumlah item yang akan tampil
+      setIsLoadingMore(false); // Reset loading status setelah data ditampilkan
+    }, 1000);
+  };
+
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Skeleton />;
   }
 
   if (errorMessage) {
@@ -26,13 +39,37 @@ export default function Home() {
   }
 
   return (
-    <section className="mx-5 flex">
-      <div>
-        {data.length &&
-          data.map((value) => <Card key={value.name.common} data={value} />)}
-      </div>
+    <div className="px-12 py-8">
+      <h2 className="text-2xl nunito-sans-bold text-center">
+        Country Rankings
+      </h2>
+      <section className="grid grid-cols-[2fr_1fr] gap-20 mt-5">
+        <div>
+          <div className="w-full">
+            {data.length &&
+              data
+                .slice(0, visibleCount)
+                .map((value) => <Card key={value.name.common} data={value} />)}
+          </div>
 
-      <Sidebar />
-    </section>
+          {visibleCount < data.length && (
+            <div className="text-center mt-10">
+              {isLoadingMore ? (
+                <p>
+                  <i className="fa-solid fa-circle-notch animate-spin"></i>
+                  <span>Processing</span>
+                </p>
+              ) : (
+                <button onClick={loadMoreItems}>
+                  <i className="fa-solid fa-circle-down animate-bounce text-3xl text-[#1D4ED8]"></i>
+                </button> // Tombol untuk load more
+              )}
+            </div>
+          )}
+        </div>
+
+        <Sidebar />
+      </section>
+    </div>
   );
 }
