@@ -61,7 +61,7 @@ export default function Home() {
                 </p>
               ) : (
                 <button onClick={loadMoreItems}>
-                  <i className="fa-solid fa-circle-down animate-bounce text-3xl text-[#1D4ED8]"></i>
+                  <i className="fa-solid fa-circle-down animate-bounce text-3xl hover:text-[#1D4ED8]"></i>
                 </button> // Tombol untuk load more
               )}
             </div>

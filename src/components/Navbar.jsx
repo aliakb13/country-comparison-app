@@ -1,12 +1,20 @@
 import { Link } from "react-router-dom";
 
 export default function Navbar({ where }) {
+  let headings;
+  if (where === "/") {
+    headings = "COUNTRY RANGKINGS";
+  } else if (where === "/compare") {
+    headings = "COMPARE COUNTRY";
+  } else {
+    headings = "COUNTRY NEWS";
+  }
   return (
     <>
       <nav className="text-xl py-8 px-20 text-white bg-[#2C3E50]">
         <div className="flex justify-between">
           <i className="fa-solid fa-paper-plane text-2xl"></i>
-          <h1 className="nunito-sans-bold">COUNTRY COMPARISON</h1>
+          <h1 className="nunito-sans-bold">{headings}</h1>
           <ul className="flex gap-8 nunito-sans-bold">
             <Link
               className={

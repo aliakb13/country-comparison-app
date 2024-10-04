@@ -2,7 +2,7 @@ import { formatPopulate } from "../utils";
 
 export default function Card({ data }) {
   return (
-    <div className="flex justify-between p-10 mt-5 h-auto border-2 w-full shadow-xl rounded-md gap-5 bg-[#E5E7EB] text-[#1F2937]">
+    <div className="flex justify-between p-10 mt-5 h-auto border-2 w-full shadow-md shadow-[#2563EB] rounded-md gap-5 bg-[#E5E7EB] text-[#1F2937]">
       <div className="flex gap-10">
         <img
           src={data.coatOfArms.png}
@@ -25,9 +25,9 @@ export default function Card({ data }) {
               <h2 className="nunito-sans-reg text-sm">Known as</h2>
               <p className="poppins-bold">{data.name.common}</p>
             </div>
-            <div className="max-w-9">
+            <div>
               <h2 className="nunito-sans-reg text-sm">Capital</h2>
-              <p className="poppins-bold w-2/4">{data.capital}</p>
+              <p className="poppins-bold">{data.capital}</p>
             </div>
             <div className="max-w-9">
               <h2 className="nunito-sans-reg text-sm">Continents</h2>
