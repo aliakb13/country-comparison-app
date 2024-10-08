@@ -28,11 +28,11 @@ export default function News() {
   const prefix = "https://nytimes.com/";
 
   return (
-    <section className="mt-5 px-10 py-10">
+    <section className="mt-5 px-10 py-10 bg-[#F9FAFB]">
       <h2 className="nunito-sans-bold text-2xl">
         HOTNEWS <i className="fa-solid fa-fire"></i>
       </h2>
-      <div className="mt-5">
+      <div className="mt-5 bg-[#1E1E2F] rounded-xl p-8">
         {data.length &&
           data.slice(0, 1).map((val) => (
             <div className="flex gap-10" key={0}>
@@ -41,24 +41,27 @@ export default function News() {
                 alt={val.snippet}
                 className="h-50 rounded-lg"
               />
-              <div className="flex flex-col gap-8">
-                <p className="poppins-regular">12 minutes read</p>
-                <div className="flex flex-col gap-3 text-">
-                  <p className="text-[#1D4ED8]">{val.source}</p>
-                  <p className="poppins-regular ">{val.byline.original}</p>
-                </div>
-
-                <h2 className="nunito-sans-bold text-xl">{val.snippet}</h2>
-                <p className="nunito-sans-bold">
-                  {val.lead_paragraph} Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Esse id error consectetur vero, dolorum
-                  deserunt, quaerat iure, alias commodi eligendi non voluptatum
-                  ducimus nobis doloribus dicta voluptatibus quas molestiae
-                  mollitia. Lorem ipsum dolor sit amet consectetur adipisicing
-                  elit. Commodi sequi cumque laborum quam est earum assumenda
-                  quidem doloribus quibusdam. Perspiciatis, porro nisi odio
-                  rerum praesentium eius cumque rem veritatis laboriosam?
+              <div className="flex flex-col gap-6 text-[#B3B3B3] p-5">
+                <a
+                  href={val.web_url}
+                  className="nunito-sans-bold text-xl text-white hover:text-[#4F46E5]"
+                  target="_blank"
+                >
+                  {val.snippet}
+                </a>
+                <p className="nunito-sans-bold text-justify">
+                  {val.lead_paragraph} Lorem ipsum dolor sit, amet consectetur
+                  adipisicing elit. Beatae aperiam porro consequuntur
+                  consectetur accusamus nostrum, autem deleniti ullam atque
+                  molestias asperiores unde ea perferendis tenetur blanditiis
+                  eaque perspiciatis, odit laborum!
                 </p>
+                <div className="flex flex-col gap-5">
+                  <p className="text-white">{val.source}</p>
+                  <p className="poppins-regular">
+                    {val.byline.original} - 12 minutes reads
+                  </p>
+                </div>
               </div>
             </div>
           ))}

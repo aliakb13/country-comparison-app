@@ -4,7 +4,7 @@ export default function MiniCard({ data }) {
   const prefix = "https://nytimes.com/";
   const image = data.multimedia[0];
   return (
-    <div className="flex flex-col gap-3 shadow-md bg-[#28293D] text-white p-5">
+    <div className="flex flex-col gap-3 shadow-md bg-[#1E1E2F] text-white p-5">
       <ReadMoreReact
         text={data.snippet}
         min={40}
