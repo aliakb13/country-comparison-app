@@ -40,9 +40,11 @@ export default function Home() {
 
   return (
     <div className="px-12 py-8">
-      <h2 className="text-2xl nunito-sans-bold text-center">
-        Country Rankings
-      </h2>
+      <div className="text-2xl nunito-sans-bold flex gap-3 justify-center">
+        <i className="fa-solid fa-ranking-star"></i>
+        <h2>Country Rankings</h2>
+      </div>
+
       <section className="grid grid-cols-[2fr_1fr] gap-20 mt-5">
         <div>
           <div className="w-full">
@@ -56,8 +58,8 @@ export default function Home() {
             <div className="text-center mt-10">
               {isLoadingMore ? (
                 <p>
-                  <i className="fa-solid fa-circle-notch animate-spin"></i>
-                  <span>Processing</span>
+                  <i className="fa-solid fa-circle-notch animate-spin text-[#1D4ED8]"></i>
+                  <span className="ms-2">Processing</span>
                 </p>
               ) : (
                 <button onClick={loadMoreItems}>

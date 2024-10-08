@@ -2,7 +2,7 @@ export default function CardNews({ data }) {
   const prefix = "https://nytimes.com/";
 
   return (
-    <div className="flex flex-col gap-5 shadow-[#1E1E2F] shadow-md rounded-xl p-10">
+    <div className="flex flex-col gap-5 shadow-[#1E1E2F] shadow-md rounded-xl p-8 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
       <h2 className="poppins-bold">{data.snippet}</h2>
       <div className="text-sm text-[#1F2937] flex gap-2 nunito-sans-bold">
         <p>{`${data.byline.original}`}</p>

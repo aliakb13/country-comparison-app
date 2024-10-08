@@ -3,7 +3,7 @@ import Skeleton from "./Skeleton";
 import MiniCard from "./MiniCard";
 
 export default function Sidebar() {
-  const { data, isLoading, errorMessage } = useSelector((state) => state.news);
+  const { data } = useSelector((state) => state.news);
 
   return (
     <section>

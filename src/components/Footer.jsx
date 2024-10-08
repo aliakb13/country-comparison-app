@@ -45,7 +45,7 @@ export default function Footer() {
             name="mail"
             id="mail"
             placeholder="Your message..."
-            className="text-black"
+            className="text-black p-2"
           ></textarea>
           <button className="border-2 py-2 px-4 rounded-md poppins-regular text-[#2C3E50] bg-[#7ACBAE] hover:text-[#F9F9F9] hover:underline border-[#2C3E50] hover:border-[#F76C6C] text-base">
             Send
