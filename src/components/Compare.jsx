@@ -24,95 +24,134 @@ export default function Compare() {
       <h2 className="poppins-bold text-center text-xl">
         SELECT COUNTRY FOR COMPARING
       </h2>
-      <div className="flex justify-center items-center p-10">
-        <div className="flex gap-10">
-          <Autocomplete
-            onChange={(event, newValue) => {
-              // console.log(newValue);
-              setCountry1(newValue);
-            }}
-            sx={{ width: 300 }}
-            options={
-              country2
-                ? data.filter((country) => country.cca2 !== country2.cca2)
-                : data
-            }
-            autoHighlight
-            getOptionLabel={(option) => option.name.common}
-            renderOption={(props, option) => {
-              const { key, ...optionProps } = props;
-              return (
-                <Box
-                  key={key}
-                  component="li"
-                  sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                  {...optionProps}
-                >
-                  <img
-                    loading="lazy"
-                    width="20"
-                    src={option.flags.png}
-                    alt={`This flag of ${option.name.common}`}
-                  />
-                  {option.name.common} ({option.cca2}){" "}
-                  {`${option.idd.root}${option.idd.suffixes[0]}`}
-                </Box>
-              );
-            }}
-            renderInput={(params) => (
-              <TextField {...params} label="Choose a country one" />
+      <div className="flex justify-center items-center p-10 mt-10">
+        <div className="flex gap-20 items-end">
+          <div>
+            <Autocomplete
+              onChange={(event, newValue) => {
+                // console.log(newValue);
+                setCountry1(newValue);
+              }}
+              sx={{ width: 300 }}
+              options={
+                country2
+                  ? data.filter((country) => country.cca2 !== country2.cca2)
+                  : data
+              }
+              autoHighlight
+              getOptionLabel={(option) => option.name.common}
+              renderOption={(props, option) => {
+                const { key, ...optionProps } = props;
+                return (
+                  <Box
+                    key={key}
+                    component="li"
+                    sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
+                    {...optionProps}
+                  >
+                    <img
+                      loading="lazy"
+                      width="20"
+                      src={option.flags.png}
+                      alt={`This flag of ${option.name.common}`}
+                    />
+                    {option.name.common} ({option.cca2}){" "}
+                    {`${option.idd.root}${option.idd.suffixes[0]}`}
+                  </Box>
+                );
+              }}
+              renderInput={(params) => (
+                <TextField {...params} label="Choose a country one" />
+              )}
+            />
+            {country1 ? (
+              <div className="mt-10 text-center flex flex-col gap-6 text-lg">
+                <p>Country 1:</p>
+                <h2 className="poppins-bold">
+                  {country1 ? country1.name && country1.name.common : ""}
+                </h2>
+                <img
+                  width={50}
+                  src={country1.flags.png}
+                  alt={`the flags of ${country1.name.common}`}
+                  className="m-auto"
+                />
+              </div>
+            ) : (
+              ""
             )}
-          />
-          <Autocomplete
-            onChange={(event, newValue) => {
-              // console.log(newValue);
-              setCountry2(newValue);
-            }}
-            sx={{ width: 300 }}
-            options={
-              country1
-                ? data.filter((country) => country.cca2 !== country1.cca2)
-                : data
-            }
-            autoHighlight
-            getOptionLabel={(option) => option.name.common}
-            renderOption={(props, option) => {
-              const { key, ...optionProps } = props;
-              return (
-                <Box
-                  key={key}
-                  component="li"
-                  sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                  {...optionProps}
-                >
-                  <img
-                    loading="lazy"
-                    width="20"
-                    src={option.flags.png}
-                    alt={`This flag of ${option.name.common}`}
-                  />
-                  {option.name.common} ({option.cca2}){" "}
-                  {`${option.idd.root}${option.idd.suffixes[0]}`}
-                </Box>
-              );
-            }}
-            renderInput={(params) => (
-              <TextField {...params} label="Choose a country two" />
+          </div>
+          <h2 className="text-3xl poppins-bold">VS</h2>
+          <div>
+            <Autocomplete
+              onChange={(event, newValue) => {
+                // console.log(newValue);
+                setCountry2(newValue);
+              }}
+              sx={{ width: 300 }}
+              options={
+                country1
+                  ? data.filter((country) => country.cca2 !== country1.cca2)
+                  : data
+              }
+              autoHighlight
+              getOptionLabel={(option) => option.name.common}
+              renderOption={(props, option) => {
+                const { key, ...optionProps } = props;
+                return (
+                  <Box
+                    key={key}
+                    component="li"
+                    sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
+                    {...optionProps}
+                  >
+                    <img
+                      loading="lazy"
+                      width="20"
+                      src={option.flags.png}
+                      alt={`This flag of ${option.name.common}`}
+                    />
+                    {option.name.common} ({option.cca2}){" "}
+                    {`${option.idd.root}${option.idd.suffixes[0]}`}
+                  </Box>
+                );
+              }}
+              renderInput={(params) => (
+                <TextField {...params} label="Choose a country two" />
+              )}
+            />
+            {country2 ? (
+              <div className="mt-10 text-center flex flex-col gap-6 text-lg">
+                <p>Country 2:</p>
+                <h2 className="poppins-bold">
+                  {country2 ? country2.name && country2.name.common : ""}
+                </h2>
+                <img
+                  width={50}
+                  src={country2.flags.png}
+                  alt={`the flags of ${country2.name.common}`}
+                  className="m-auto"
+                />
+              </div>
+            ) : (
+              ""
             )}
-          />
+          </div>
         </div>
       </div>
-      <p>{country1 ? country1.name && country1.name.common : "kosong"}</p>
-      <p>{country2 ? country2.name && country2.name.common : "kosong"}</p>
-      {!country1 || !country2 ? (
-        <Button variant="contained" disabled>
-          Disabled
-        </Button>
-      ) : (
-        <Button variant="contained" onClick={handleCompare}>
-          Contained
-        </Button>
-      )}
+
+      <div className="text-center mt-10">
+        {!country1 || !country2 ? (
+          <Button variant="contained" disabled>
+            Please choose 2 countries
+          </Button>
+        ) : (
+          <Button variant="contained" onClick={handleCompare}>
+            Compared
+          </Button>
+        )}
+      </div>
+
       <Outlet />
     </section>
   );

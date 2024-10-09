@@ -4,11 +4,12 @@ export default function Navbar({ where }) {
   let headings;
   if (where === "/") {
     headings = "COUNTRY RANGKINGS";
-  } else if (where === "/compare") {
+  } else if (where === "/compare" || where.match(/^\/compare\/.+\/n\/.+/)) {
     headings = "COMPARE COUNTRY";
   } else {
     headings = "COUNTRY NEWS";
   }
+  console.log(where);
   return (
     <>
       <nav className="text-xl py-8 px-20 text-white bg-[#2C3E50]">
@@ -29,7 +30,7 @@ export default function Navbar({ where }) {
 
             <div
               className={
-                where === "/compare"
+                where === "/compare" || where.match(/^\/compare\/.+\/n\/.+/)
                   ? "text-[#F76C6C] underline"
                   : "hover:text-[#F76C6C] hover:underline cursor-pointer"
               }
