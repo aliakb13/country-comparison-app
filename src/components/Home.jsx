@@ -42,7 +42,7 @@ export default function Home() {
     <div className="px-12 py-8">
       <div className="text-2xl nunito-sans-bold flex gap-3 justify-center">
         <i className="fa-solid fa-ranking-star"></i>
-        <h2>Country Rankings</h2>
+        <h2>Country Rankings by Population</h2>
       </div>
 
       <section className="grid grid-cols-[2fr_1fr] gap-20 mt-5">
