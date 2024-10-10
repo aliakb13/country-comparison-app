@@ -9,7 +9,7 @@ export default function Navbar({ where }) {
   } else {
     headings = "COUNTRY NEWS";
   }
-  console.log(where);
+
   return (
     <>
       <nav className="text-xl py-8 px-20 text-white bg-[#2C3E50]">
