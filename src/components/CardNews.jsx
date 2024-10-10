@@ -1,5 +1,7 @@
+import constUrl from "../constants";
+
 export default function CardNews({ data }) {
-  const prefix = "https://nytimes.com/";
+  const prefix = constUrl.nyt.prefix;
 
   return (
     <div className="flex flex-col gap-5 shadow-[#1E1E2F] shadow-lg rounded-xl p-8 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">

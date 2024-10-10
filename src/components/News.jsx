@@ -3,17 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchNews } from "../features/news/newsSlice";
 import Skeleton from "./Skeleton";
 import CardNews from "./CardNews";
+import constUrl from "../constants";
 
 export default function News() {
   const { data, isLoading, errorMessage } = useSelector((state) => state.news);
 
   const dispatch = useDispatch();
-  const key = import.meta.env.VITE_API_NYT_KEY;
-  const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=peace&api-key=${key}`;
 
   useEffect(() => {
     if (!data.length) {
-      dispatch(fetchNews(url));
+      dispatch(fetchNews(constUrl.nyt.url));
     }
   }, [dispatch]);
 
@@ -25,7 +24,7 @@ export default function News() {
     return <div>{errorMessage}</div>;
   }
 
-  const prefix = "https://nytimes.com/";
+  const prefix = constUrl.nyt.prefix;
 
   return (
     <section className="mt-5 px-10 py-10 bg-[#F9FAFB]">

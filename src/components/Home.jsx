@@ -4,13 +4,14 @@ import { fetchCountry } from "../features/country/countrySlice";
 import Card from "./Card";
 import Sidebar from "./Sidebar";
 import Skeleton from "./Skeleton";
+import constUrl from "../constants";
 
 export default function Home() {
   const { data, isLoading, errorMessage } = useSelector(
     (state) => state.country
   );
   const dispatch = useDispatch();
-  const url = import.meta.env.VITE_COUNTRY_URL;
+  const url = constUrl.countries;
 
   useEffect(() => {
     if (!data.length) {

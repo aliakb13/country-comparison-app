@@ -1,7 +1,8 @@
 import ReadMoreReact from "read-more-react";
+import constUrl from "../constants";
 
 export default function MiniCard({ data }) {
-  const prefix = "https://nytimes.com/";
+  const prefix = constUrl.nyt.prefix;
   const image = data.multimedia[0];
   return (
     <div className="flex flex-col gap-3 shadow-md bg-[#1E1E2F] text-white p-5">
